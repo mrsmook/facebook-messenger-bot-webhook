@@ -36,7 +36,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Text received, echo: "+ "test");
                 search(text, function (req, res) {
                   console.log(res);
-                }
+                });
                 }
         }
     }
