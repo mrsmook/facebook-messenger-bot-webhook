@@ -1,8 +1,11 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var request = require('request');
-var search = require("node-albion-api")
+var request = require('request');const {
+  search 
+} = require("node-albion-api")
+ 
+
 
 app.use(bodyParser.json());
 
@@ -34,9 +37,8 @@ app.post('/webhook/', function (req, res) {
             text = event.message.text;
             // or using async
                 sendTextMessage(sender, "Text received, echo: "+ "test");
-                search(text, function (req, results) {
-                  console.log(results);
-                });
+                search(text)
+                          .then((results) => console.log(results))
                 
         }
     }
