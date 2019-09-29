@@ -37,7 +37,7 @@ app.post('/webhook/', function (req, res) {
                 search(text, function (req, results) {
                   console.log(results);
                 });
-                }
+                
         }
     }
     res.sendStatus(200);
