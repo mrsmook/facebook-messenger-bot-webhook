@@ -2,6 +2,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
+const {
+  search 
+} = require("node-albion-api")
 
 app.use(bodyParser.json());
 
@@ -21,6 +24,8 @@ app.get('/webhook', function (req, res) {
     }
 });
 
+
+
 app.post('/webhook/', function (req, res) {
     console.log (req.body);
     messaging_events = req.body.entry[0].messaging;
@@ -29,8 +34,9 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id;
         if (event.message && event.message.text) {
             text = event.message.text;
-            // Your Logic Replaces the following Line
-            sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
+            // or using async
+                search(text)
+                  .then((results) => sendTextMessage(sender, "Text received, echo: "+ results))
         }
     }
     res.sendStatus(200);
