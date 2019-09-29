@@ -34,9 +34,9 @@ app.post('/webhook/', function (req, res) {
             text = event.message.text;
             // or using async
                 sendTextMessage(sender, "Text received, echo: "+ "test");
-                const doAwesomeStuff = async () => {
-                  const searchResults = await search(text)
-                  console.log(searchResults)
+                search(text, function (req, res) {
+                  console.log(res);
+                }
                 }
         }
     }
