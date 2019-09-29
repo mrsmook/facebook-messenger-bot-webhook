@@ -2,9 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
-const {
-  search
-} = require("node-albion-api")
+var search = require("node-albion-api")
 
 app.use(bodyParser.json());
 
